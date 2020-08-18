@@ -27,7 +27,7 @@ from sklearn.model_selection import ShuffleSplit
 
 
 def plot_learning_curve(estimator, title, X, y, axes=None, ylim=None, cv=None,
-                        n_jobs=None, train_sizes=np.linspace(.1, 1.0, 5)):
+                        n_jobs=None, train_sizes=np.linspace(.1, 1.0, 5), scoring=None):
     """
     Generate 3 plots: the test and training learning curve, the training
     samples vs fit times curve, the fit times vs score curve.
@@ -98,7 +98,7 @@ def plot_learning_curve(estimator, title, X, y, axes=None, ylim=None, cv=None,
     train_sizes, train_scores, test_scores, fit_times, _ = \
         learning_curve(estimator, X, y, cv=cv, n_jobs=n_jobs,
                        train_sizes=train_sizes,
-                       return_times=True)
+                       return_times=True, scoring=scoring)
     train_scores_mean = np.mean(train_scores, axis=1)
     train_scores_std = np.std(train_scores, axis=1)
     test_scores_mean = np.mean(test_scores, axis=1)
